@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3380/dolap-case?useSSL=false
+    username: user
+    password: dolap
+  jpa:
+    properties:
+      hibarnate: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: create
+      format_sql: false
+
+app:
+  jwtSecret : itIsMySecret
+  jwtExpirationInMs : 604800000
