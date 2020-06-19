@@ -2,13 +2,11 @@ package com.example.dolapcase.service.impl;
 
 import com.example.dolapcase.exception.exceptions.productExceptions.ProductAlreadyExistsException;
 import com.example.dolapcase.exception.exceptions.productExceptions.ProductNotFoundException;
-import com.example.dolapcase.model.Category;
 import com.example.dolapcase.model.Product;
-import com.example.dolapcase.model.User;
 import com.example.dolapcase.repository.CategoryRepository;
 import com.example.dolapcase.repository.ProductRepository;
 import com.example.dolapcase.request.productRequest.AddProductRequest;
-import com.example.dolapcase.request.productRequest.UpdateProduct;
+import com.example.dolapcase.request.productRequest.UpdateProductRequest;
 import com.example.dolapcase.response.ApiResponse;
 import com.example.dolapcase.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -58,15 +55,15 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public ResponseEntity<?> update(UpdateProduct updateProduct) {
+    public ResponseEntity<?> update(UpdateProductRequest updateProductRequest) {
         Product product = new Product();
 
-        product = productRepository.findByName(updateProduct.getName()).orElseThrow(()-> new ProductNotFoundException());
+        product = productRepository.findByName(updateProductRequest.getName()).orElseThrow(()-> new ProductNotFoundException());
 
-        product.setName(updateProduct.getName());
-        product.setExplanation(updateProduct.getExplanation());
-        product.setPrice(updateProduct.getPrice());
-        product.setCategory(updateProduct.getCategory());
+        product.setName(updateProductRequest.getName());
+        product.setExplanation(updateProductRequest.getExplanation());
+        product.setPrice(updateProductRequest.getPrice());
+        product.setCategory(updateProductRequest.getCategory());
 
         productRepository.save(product);
 

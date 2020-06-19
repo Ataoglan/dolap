@@ -6,6 +6,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UpdateProduct extends BaseProductRequest {
+public class UpdateProductRequest extends BaseProductRequest {
     private Category category;
 }

@@ -25,7 +25,7 @@ public class CategoryController {
     }
 
     @GetMapping("/categories")
-    public ResponseEntity<?> getProducts() {
+    public ResponseEntity<?> getCategories() {
 
         List<Category> categoryList = categoryService.getCategories();
 
@@ -33,19 +33,19 @@ public class CategoryController {
     }
 
     @PostMapping("/addcategory")
-    public ResponseEntity<?> addProduct(@RequestBody @Valid AddCategoryRequest addCategoryRequest){
+    public ResponseEntity<?> addCategory(@RequestBody @Valid AddCategoryRequest addCategoryRequest){
         categoryService.save(addCategoryRequest);
         return new ResponseEntity<>(new ApiResponse(true, "category is added"), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/deletecategory/{id}")
-    public ResponseEntity<?> deleteProduct(@PathVariable Long id){
+    public ResponseEntity<?> deleteCategory(@PathVariable Long id){
         categoryService.delete(id);
         return new ResponseEntity<>(new ApiResponse(true, "category is deleted"), HttpStatus.OK);
     }
 
     @PutMapping("/updatecategory")
-    public ResponseEntity<?> updateProduct(@RequestBody @Valid UpdateCategoryRequest updateCategoryRequest){
+    public ResponseEntity<?> updateCategory(@RequestBody @Valid UpdateCategoryRequest updateCategoryRequest){
         categoryService.update(updateCategoryRequest);
         return new ResponseEntity<>(new ApiResponse(true, "category is updated"), HttpStatus.OK);
     }

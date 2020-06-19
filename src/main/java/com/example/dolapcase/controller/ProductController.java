@@ -2,7 +2,7 @@ package com.example.dolapcase.controller;
 
 import com.example.dolapcase.model.Product;
 import com.example.dolapcase.request.productRequest.AddProductRequest;
-import com.example.dolapcase.request.productRequest.UpdateProduct;
+import com.example.dolapcase.request.productRequest.UpdateProductRequest;
 import com.example.dolapcase.response.ApiResponse;
 import com.example.dolapcase.service.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +45,8 @@ public class ProductController {
     }
 
     @PutMapping("/updateproduct")
-    public ResponseEntity<?> updateProduct(@RequestBody @Valid UpdateProduct updateProduct){
-        productService.update(updateProduct);
+    public ResponseEntity<?> updateProduct(@RequestBody @Valid UpdateProductRequest updateProductRequest){
+        productService.update(updateProductRequest);
         return new ResponseEntity<>(new ApiResponse(true, "product is updated"), HttpStatus.OK);
     }
 }
