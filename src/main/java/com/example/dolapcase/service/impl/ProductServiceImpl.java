@@ -2,6 +2,7 @@ package com.example.dolapcase.service.impl;
 
 import com.example.dolapcase.exception.exceptions.productExceptions.ProductAlreadyExistsException;
 import com.example.dolapcase.exception.exceptions.productExceptions.ProductNotFoundException;
+import com.example.dolapcase.model.Category;
 import com.example.dolapcase.model.Product;
 import com.example.dolapcase.model.User;
 import com.example.dolapcase.repository.ProductRepository;
@@ -16,9 +17,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.*;
+import java.util.stream.Collectors;
 
+@Service
 public class ProductServiceImpl implements ProductService {
 
     private ProductRepository productRepository;
@@ -77,5 +82,15 @@ public class ProductServiceImpl implements ProductService {
         Pageable pageable = PageRequest.of(pageNo,pageSize, Sort.by(sortBy));
         Page<Product> page = productRepository.findAll(pageable);
         return page;
+    }
+
+    public List<Product> getProducts(){
+        List<Product> products;
+
+        products = productRepository.findAll();
+
+        Collections.sort(products, Comparator.comparing(product -> product.getCategory().getName()));
+
+        return products;
     }
 }

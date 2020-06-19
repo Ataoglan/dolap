@@ -1,9 +1,10 @@
 package com.example.dolapcase.exception.exceptions;
 
-import com.ataoglan.ataoglanblog.exception.BlogException;
-import com.ataoglan.ataoglanblog.exception.code.impl.BlogErrorCode;
 
-public class MissingParametersException extends BlogException {
+import com.example.dolapcase.exception.DolapException;
+import com.example.dolapcase.exception.code.impl.DolapErrorCode;
 
-    public MissingParametersException(String ... params){super(BlogErrorCode.MISSING_PARAMETER, null, params);}
+public class MissingParametersException extends DolapException {
+
+    public MissingParametersException(String ... params){super(DolapErrorCode.MISSING_PARAMETER, null, params);}
 }

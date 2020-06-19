@@ -1,6 +1,7 @@
 package com.example.dolapcase.service.impl;
 
 import com.example.dolapcase.exception.exceptions.categoryExceptions.CategoryAlreadyExistsException;
+import com.example.dolapcase.exception.exceptions.categoryExceptions.CategoryNotFoundException;
 import com.example.dolapcase.model.Category;
 import com.example.dolapcase.repository.CategoryRepository;
 import com.example.dolapcase.request.categoryRequest.AddCategoryRequest;
@@ -59,7 +60,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional
     public ResponseEntity<?> delete(Long id) {
-        categoryRepository.findById(id).orElseThrow(()-> new CategoryAlreadyExistsException());
+        categoryRepository.findById(id).orElseThrow(()-> new CategoryNotFoundException());
         categoryRepository.deleteById(id);
 
         return new ResponseEntity(new ApiResponse(true, "Category is deleted"), HttpStatus.ACCEPTED);

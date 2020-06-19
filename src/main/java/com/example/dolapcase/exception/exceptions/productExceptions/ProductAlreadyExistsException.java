@@ -5,6 +5,6 @@ import com.example.dolapcase.exception.code.impl.DolapErrorCode;
 
 public class ProductAlreadyExistsException extends DolapException {
     public ProductAlreadyExistsException() {
-        super(DolapErrorCode.PICTURE_NOT_FOUND);
+        super(DolapErrorCode.PRODUCT_ALREADY_EXISTS);
     }
 }
