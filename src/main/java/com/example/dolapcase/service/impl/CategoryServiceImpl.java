@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -71,5 +72,12 @@ public class CategoryServiceImpl implements CategoryService {
         Pageable pageable = PageRequest.of(pageNo,pageSize, Sort.by(sortBy));
         Page<Category> page = categoryRepository.findAll(pageable);
         return page;
+    }
+
+    public List<Category> getCategories(){
+        List<Category> categories;
+        categories = categoryRepository.findAll();
+
+        return categories;
     }
 }
