@@ -1,14 +1,10 @@
 package com.example.dolapcase.controller;
 
 import com.example.dolapcase.model.Category;
-import com.example.dolapcase.model.Product;
 import com.example.dolapcase.request.categoryRequest.AddCategoryRequest;
 import com.example.dolapcase.request.categoryRequest.UpdateCategoryRequest;
-import com.example.dolapcase.request.productRequest.AddProductRequest;
-import com.example.dolapcase.request.productRequest.UpdateProduct;
 import com.example.dolapcase.response.ApiResponse;
 import com.example.dolapcase.service.impl.CategoryServiceImpl;
-import com.example.dolapcase.service.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

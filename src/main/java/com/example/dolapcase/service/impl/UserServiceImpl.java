@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
                     HttpStatus.BAD_REQUEST);
         }
 
-        User user = null;
+        User user = new User();
 
         user.setUsername(addUserRequest.getUsername());
         user.setPassword(passwordEncoder.encode(addUserRequest.getPassword()));
