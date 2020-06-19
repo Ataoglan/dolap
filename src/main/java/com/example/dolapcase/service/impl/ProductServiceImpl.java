@@ -5,6 +5,7 @@ import com.example.dolapcase.exception.exceptions.productExceptions.ProductNotFo
 import com.example.dolapcase.model.Category;
 import com.example.dolapcase.model.Product;
 import com.example.dolapcase.model.User;
+import com.example.dolapcase.repository.CategoryRepository;
 import com.example.dolapcase.repository.ProductRepository;
 import com.example.dolapcase.request.productRequest.AddProductRequest;
 import com.example.dolapcase.request.productRequest.UpdateProduct;
@@ -27,10 +28,12 @@ import java.util.stream.Collectors;
 public class ProductServiceImpl implements ProductService {
 
     private ProductRepository productRepository;
+    private CategoryRepository categoryRepository;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository){
+    public ProductServiceImpl(ProductRepository productRepository, CategoryRepository categoryRepository){
         this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @Override
@@ -40,12 +43,13 @@ public class ProductServiceImpl implements ProductService {
             return new ResponseEntity(new ApiResponse(false, "product is already added"), HttpStatus.BAD_REQUEST);
         }
 
-        Product product = null;
+
+        Product product = new Product();
 
         product.setName(addProductRequest.getName());
         product.setExplanation(addProductRequest.getExplanation());
         product.setPrice(addProductRequest.getPrice());
-        product.setCategory(addProductRequest.getCategory());
+        product.setCategory(categoryRepository.findById(addProductRequest.getCategoryId()).get());
 
         productRepository.save(product);
 
@@ -55,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional
     public ResponseEntity<?> update(UpdateProduct updateProduct) {
-        Product product = null;
+        Product product = new Product();
 
         product = productRepository.findByName(updateProduct.getName()).orElseThrow(()-> new ProductNotFoundException());
 

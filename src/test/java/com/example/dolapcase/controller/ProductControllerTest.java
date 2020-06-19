@@ -28,12 +28,12 @@ public class ProductControllerTest {
     @Test
     void it_should_add_product(){
         AddProductRequest addProductRequest = null;
-        Category category = categoryRepository.findByName("Bilgisayar").get();
+        Long catId = 1L;
 
         addProductRequest.setName("laptop");
         addProductRequest.setExplanation("4 gb ram, 500gb ssd");
         addProductRequest.setPrice(4500);
-        addProductRequest.setCategory(category);
+        addProductRequest.setCategoryId(catId);
 
         productController.addProduct(addProductRequest);
 

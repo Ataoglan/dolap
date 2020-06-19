@@ -1,6 +1,5 @@
 package com.example.dolapcase.request.productRequest;
 
-import com.example.dolapcase.model.Category;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class AddProductRequest extends BaseProductRequest{
 
-    private Category category;
+    private Long categoryId;
 }
