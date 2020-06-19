@@ -51,7 +51,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void it_should_delete_user() {
+    void it_should_delete_product() {
 
         long id = 1L;
 

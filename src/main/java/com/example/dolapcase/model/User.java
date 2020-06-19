@@ -24,6 +24,6 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private UserStatus status;
 
-    @Column(name = "role") //ToDo cascade
+    @Column(name = "role")
     private Role role;
 }

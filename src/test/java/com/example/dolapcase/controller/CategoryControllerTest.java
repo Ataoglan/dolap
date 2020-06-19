@@ -47,7 +47,7 @@ class CategoryControllerTest {
     }
 
     @Test
-    void it_should_delete_user() {
+    void it_should_delete_category() {
 
         long id = 1L;
 

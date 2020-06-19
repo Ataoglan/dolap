@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.util.function.Function;
 
 @Entity(name = "categories")
 @Data
